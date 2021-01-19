@@ -15,6 +15,9 @@ import math
 import random
 from pprint import pprint
 
+# Test bot on https://vk.com/club195096600
+
+
 # start session
 vk_session = vk_api.VkApi(token='28cea37f8313fb3127847454f0cd20c18c136d378aefa5334ce0193b47ab20606aef94fccac81503d2509')
 vk = vk_session.get_api()
@@ -23,12 +26,12 @@ longpoll = VkLongPoll(vk_session)
 
 # images
 attachments = []
-photo = upload.photo_messages(photos='kitty.jpg')[0]
+photo = upload.photo_messages(photos='src/kitty.jpg')[0]
 attachments.append("photo{}_{}".format(photo["owner_id"], photo["id"]))
-kitties = ['kitty_love.jpg', 'kitty_love2.jpg', 'kitty_love3.jpg', 'kitty_love4.jpg', 'kitty_love5.jpg',
-           'kitty_love6.jpg', 'kitty_love6.jpg', 'kitty_love7.jpg', 'kitty_love8.jpg', 'kitty_love9.jpg',
-           'kitty_love10.jpg']
-doggo = upload.photo_messages(photos='dog_love.jpg')[0]
+kitties = ['src/kitty_love.jpg', 'src/kitty_love2.jpg', 'src/kitty_love3.jpg', 'src/kitty_love4.jpg', 'src/kitty_love5.jpg',
+           'src/kitty_love6.jpg', 'src/kitty_love6.jpg', 'src/kitty_love7.jpg', 'src/kitty_love8.jpg', 'src/kitty_love9.jpg',
+           'src/kitty_love10.jpg']
+doggo = upload.photo_messages(photos='src/dog_love.jpg')[0]
 
 # weather API
 weather_api_key = "ada08f64c3f4dfc5e5b043a59ed2bc6f"
@@ -623,12 +626,6 @@ for event in longpoll.listen():
             day_weather(event, next_day=True)
         elif event.text.lower() == "на 5 дней":
             week_weather(event)
-        elif event.text.lower() == "костя лох":
-            vk.messages.send(
-                user_id=event.user_id,
-                random_id=get_random_id(),
-                message="Трусы в горох"
-            )
         elif event.text.lower() == "спасибо" or event.text.lower() == "спс" or event.text.lower() == "молодец":
             vk.messages.send(
                 user_id=event.user_id,

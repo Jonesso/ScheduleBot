@@ -13,6 +13,7 @@ schedule_page = requests.get(mirea_schedule_site)
 soup2 = BeautifulSoup(schedule_page.text, "html.parser")
 results = soup2.find("div", {"class": "rasspisanie"}).find(string="Институт информационных технологий"). \
     find_parent("div").find_parent("div").findAll("a", {"class": "uk-link-toggle"})
+
 # professors = {}
 #
 #
